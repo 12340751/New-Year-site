@@ -1,0 +1,71 @@
+:root{
+  --bg1:#071028;
+  --bg2:#0f2740;
+  --card:#0e1530cc;
+  --accent:#ffd166;
+  --muted:#bcd4ff;
+  --glass: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(ellipse at 10% 10%, rgba(255,200,100,0.05), transparent 10%), linear-gradient(120deg,var(--bg1),var(--bg2));
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{
+  width:100%;max-width:980px;padding:2.4rem;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));box-shadow: 0 12px 60px rgba(2,6,23,0.65);backdrop-filter: blur(8px);border:1px solid rgba(255,255,255,0.045);
+}
+.title{margin:0 0 1rem 0;text-align:center;font-weight:800;color:var(--accent);letter-spacing:0.6px;font-size:1.9rem;text-shadow: 0 6px 24px rgba(255,209,102,0.08)}
+.countdown{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.time-segment{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:1.1rem 1.25rem;border-radius:14px;min-width:120px;text-align:center;box-shadow: 0 6px 18px rgba(2,6,23,0.45);border:1px solid rgba(255,255,255,0.04)}
+.num{display:block;font-size:3.2rem;font-weight:900;color:#fff;letter-spacing:1px;text-shadow: 0 10px 30px rgba(0,0,0,0.55)}
+.label{display:block;font-size:0.9rem;margin-top:6px;color:rgba(255,255,255,0.78);font-weight:500}
+.tz{text-align:center;margin:0.9rem 0 0;color:rgba(255,255,255,0.6)}
+.hidden{display:none}
+.celebration{margin-top:1rem;text-align:center}
+.celebration h2{color:var(--accent);font-size:2.2rem;margin:0}
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  .num{font-size:2.1rem}
+  .time-segment{min-width:86px;padding:0.65rem}
+}
+
+/* Canvas should sit behind content */
+#confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:0}
+.card{position:relative;z-index:2}
+
+/* subtle floating stars */
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);background-size:40px 40px;opacity:0.6;mix-blend-mode:overlay}
+
+/* animated gradient */
+body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.25;background:linear-gradient(120deg, rgba(255,200,100,0.05), rgba(6,60,120,0.04));background-size:200% 200%;animation: bgShift 10s ease infinite}
+@keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* number flip animation */
+@keyframes flipIn{
+  0%{transform: perspective(600px) rotateX(0deg) translateY(0);opacity:1}
+  40%{transform: perspective(600px) rotateX(-75deg) translateY(-8px);opacity:1}
+  100%{transform: perspective(600px) rotateX(0deg) translateY(0);opacity:1}
+}
+.num.flip{animation: flipIn 520ms cubic-bezier(.2,.9,.3,1)}
+
+/* twinkling stars overlay (small sparkles) */
+.sparkle{position:absolute;inset:0;pointer-events:none;z-index:1}
+.sparkle::after{content:'';position:absolute;left:20%;top:18%;width:6px;height:6px;background:radial-gradient(circle,#fff, rgba(255,255,255,0.01));border-radius:50%;box-shadow: 0 0 12px rgba(255,255,255,0.12)}
+
+/* ensure card content sits above overlays */
+.card{position:relative;z-index:3}
+
+/* larger screens */
+@media (min-width:1200px){
+  .card{padding:3rem}
+  .num{font-size:4rem}
+  .title{font-size:2.6rem}
+}
+
