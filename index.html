@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Отсчёт до Нового Года</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="theme-color" content="#071028">
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <h1 class="title">До Нового Года осталось</h1>
+      <div id="countdown" class="countdown" aria-live="polite">
+        <div class="time-segment"><span class="num" id="days">0</span><span class="label">Дней</span></div>
+        <div class="time-segment"><span class="num" id="hours">00</span><span class="label">Часов</span></div>
+        <div class="time-segment"><span class="num" id="minutes">00</span><span class="label">Минут</span></div>
+        <div class="time-segment"><span class="num" id="seconds">00</span><span class="label">Секунд</span></div>
+      </div>
+      <p class="tz">Цель: <span id="target-label"></span></p>
+      <div id="celebration" class="celebration hidden">
+        <h2>С Новым Годом!</h2>
+      </div>
+    </div>
+  </main>
+  <canvas id="confetti-canvas"></canvas>
+  <script src="js/script.js"></script>
+</body>
+</html>
